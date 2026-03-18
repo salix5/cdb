@@ -1,0 +1,29 @@
+name: Update Snapshot
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'db/*.sql'
+
+jobs:
+  update-snapshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate database files from dump
+        run: |
+          sqlite3 ./db/cards.cdb < ./db/cards.cdb.sql
+          sqlite3 ./db/pre-release.cdb < ./db/pre-release.cdb.sql
+
+      - name: Upload database files to GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "snapshot" --title "Latest Snapshot" --notes "" 2>/dev/null || true
+          gh release edit "snapshot" --notes "Last updated: $(TZ='Asia/Taipei' date -d '${{ github.event.head_commit.timestamp }}' '+%Y-%m-%d %H:%M:%S UTC+8')"
+          gh release upload "snapshot" ./db/cards.cdb ./db/pre-release.cdb --clobber
