@@ -25,7 +25,10 @@ jobs:
       - name: Upload database files to GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TZ: 'Asia/Taipei'
+          COMMIT_TIME: ${{ github.event.head_commit.timestamp }}
         run: |
+          UPDATE_TIME=$(date -d "$COMMIT_TIME" '+%Y-%m-%d %H:%M:%S UTC+8')
           gh release create "snapshot" --title "Latest Snapshot" --notes "" 2>/dev/null || true
-          gh release edit "snapshot" --notes "Last updated: $(TZ='Asia/Taipei' date -d '${{ github.event.head_commit.timestamp }}' '+%Y-%m-%d %H:%M:%S UTC+8')"
+          gh release edit "snapshot" --notes "Last updated: $UPDATE_TIME"
           gh release upload "snapshot" ./db/cards.cdb ./db/pre-release.cdb --clobber
