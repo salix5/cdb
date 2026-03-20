@@ -17,8 +17,10 @@ jobs:
 
       - name: Generate database files from dump
         run: |
-          sqlite3 ./db/cards.cdb < ./db/cards.cdb.sql
-          sqlite3 ./db/pre-release.cdb < ./db/pre-release.cdb.sql
+          curl -L https://www.sqlite.org/2026/sqlite-tools-linux-x86-3510300.zip -o sqlite.zip
+          unzip sqlite.zip
+          ./sqlite3 ./db/cards.cdb < ./db/cards.cdb.sql
+          ./sqlite3 ./db/pre-release.cdb < ./db/pre-release.cdb.sql
 
       - name: Upload database files to GitHub Release
         env:
