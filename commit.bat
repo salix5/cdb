@@ -1,1 +1,1 @@
-sqlite3 < dump.sql
+sqlite3 <dump.sql
