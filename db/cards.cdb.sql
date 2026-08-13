@@ -1,17 +1,17 @@
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
 CREATE TABLE datas(
-    "id" INTEGER PRIMARY KEY,
-    "ot" INTEGER,
-    "alias" INTEGER,
-    "setcode" INTEGER,
-    "type" INTEGER,
-    "atk" INTEGER,
-    "def" INTEGER,
-    "level" INTEGER,
-    "race" INTEGER,
-    "attribute" INTEGER,
-    "category" INTEGER
+    id INTEGER PRIMARY KEY,
+    ot INTEGER,
+    alias INTEGER,
+    setcode INTEGER,
+    type INTEGER,
+    atk INTEGER,
+    def INTEGER,
+    level INTEGER,
+    race INTEGER,
+    attribute INTEGER,
+    category INTEGER
 ) STRICT;
 INSERT INTO datas VALUES(483,3,0,460,65538,0,0,0,0,0,262144);
 INSERT INTO datas VALUES(2511,3,0,382,33,0,0,1,8,32,263184);
@@ -14963,26 +14963,26 @@ INSERT INTO datas VALUES(99989863,3,0,432,4,0,0,0,0,0,8);
 INSERT INTO datas VALUES(99991455,3,0,0,97,3000,2200,10,1,16,278528);
 INSERT INTO datas VALUES(99995595,3,0,0,2,0,0,0,0,0,1049600);
 CREATE TABLE texts(
-    "id" INTEGER PRIMARY KEY,
-    "name" TEXT,
-    "desc" TEXT,
-    "str1" TEXT,
-    "str2" TEXT,
-    "str3" TEXT,
-    "str4" TEXT,
-    "str5" TEXT,
-    "str6" TEXT,
-    "str7" TEXT,
-    "str8" TEXT,
-    "str9" TEXT,
-    "str10" TEXT,
-    "str11" TEXT,
-    "str12" TEXT,
-    "str13" TEXT,
-    "str14" TEXT,
-    "str15" TEXT,
-    "str16" TEXT,
-    FOREIGN KEY("id") REFERENCES datas("id") DEFERRABLE INITIALLY DEFERRED
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    desc TEXT,
+    str1 TEXT,
+    str2 TEXT,
+    str3 TEXT,
+    str4 TEXT,
+    str5 TEXT,
+    str6 TEXT,
+    str7 TEXT,
+    str8 TEXT,
+    str9 TEXT,
+    str10 TEXT,
+    str11 TEXT,
+    str12 TEXT,
+    str13 TEXT,
+    str14 TEXT,
+    str15 TEXT,
+    str16 TEXT,
+    FOREIGN KEY(id) REFERENCES datas(id) DEFERRABLE INITIALLY DEFERRED
 ) STRICT;
 INSERT INTO texts VALUES(483,'平行瞬移',unistr('這個卡名的卡在1回合只能發動1張，此卡發動的整回合中，我方除了超能族怪獸以外不能特殊召喚。\u000a①：將我方場上1隻持有等級的超能族怪獸解放可以發動。從牌組、額外牌組將1隻等級7以下的超能族怪獸特殊召喚。解放的怪獸和此效果特殊召喚的怪獸的原等級不同的場合，隨後我方失去那個差額×1000生命值。'),'效果1','','','','','','','','','','','','','','','');
 INSERT INTO texts VALUES(2511,'拉比麗斯的狂時鐘',unistr('這個卡名的①②效果1回合各能使用1次。\u000a①：將此卡從手牌捨棄可以發動。這個回合，我方場上有「拉比麗斯」怪獸存在的場合，我方可以將1張通常陷阱卡在覆蓋的回合發動。此效果在對手回合也能發動。\u000a②：此卡在墓地存在的狀態，我方為了發動「拉比麗斯的狂時鐘」以外的「拉比麗斯」卡片的效果或通常陷阱卡，而讓手牌的卡被送去墓地的場合可以發動。此卡加入手牌或特殊召喚。\u000a\u000a※白銀之城的狂時鐘'),'效果1','效果2','適用「拉比麗斯的狂時鐘」的效果來發動','','','','','','','','','','','','','');
