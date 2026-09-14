@@ -19,8 +19,8 @@ jobs:
         run: |
           curl -q -f -L https://sqlite.org/2026/sqlite-tools-linux-x64-3510300.zip -o sqlite.zip
           unzip sqlite.zip
-          ./sqlite3 ./db/cards.cdb < ./db/cards.cdb.sql
-          ./sqlite3 ./db/pre-release.cdb < ./db/pre-release.cdb.sql
+          ./sqlite3 db/cards.cdb < db/cards.cdb.sql
+          ./sqlite3 db/pre-release.cdb < db/pre-release.cdb.sql
 
       - name: Upload database files to GitHub Release
         env:
@@ -31,4 +31,4 @@ jobs:
           UPDATE_TIME=$(date -d "$COMMIT_TIME" '+%Y-%m-%d %H:%M:%S UTC+8')
           gh release create "snapshot" --title "Latest Snapshot" --notes "" 2>/dev/null || true
           gh release edit "snapshot" --notes "Last updated: $UPDATE_TIME"
-          gh release upload "snapshot" ./db/cards.cdb ./db/pre-release.cdb --clobber
+          gh release upload "snapshot" db/cards.cdb db/pre-release.cdb --clobber
