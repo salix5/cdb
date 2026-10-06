@@ -129,7 +129,7 @@ CREATE TABLE texts(
     "str14" TEXT,
     "str15" TEXT,
     "str16" TEXT,
-    FOREIGN KEY("id") REFERENCES datas("id") DEFERRABLE INITIALLY DEFERRED
+    FOREIGN KEY("id") REFERENCES datas("id") ON DELETE CASCADE ON UPDATE CASCADE
 ) STRICT;
 INSERT INTO texts VALUES(100262301,'烏素姆的魔龍王','從封閉的地下世界甦醒的異星之龍。剛睡醒時只能發揮原本千分之一的力量，在澤塔次元也是很有名的冷知識。','','','','','','','','','','','','','','','','');
 INSERT INTO texts VALUES(100268001,'業火的魔神 艾克佐迪亞',unistr('①：我方回合抽到此卡時，向對手展示此卡可以發動。此卡特殊召喚。\u000a②：此卡在我方回合特殊召喚的場合可以發動。這個回合，雙方不能發動「業火的魔神 艾克佐迪亞」以外的卡的效果，我方不能將怪獸召喚、特殊召喚。\u000a③：此卡進行戰鬥的傷害步驟開始時可以發動。對手場上的怪獸全部破壞，給予對手那些原攻擊力合計數值的傷害。'),'特殊召喚','封鎖效果','破壞效果','','','','','','','','','','','','','');
