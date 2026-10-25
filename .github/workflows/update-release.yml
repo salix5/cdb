@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'db/*.sql'
-      - 'sql/*.sql'
 
 jobs:
   update-snapshot:
